@@ -1,0 +1,30 @@
+// C++ program for
+// Recursive implementation of
+// Max sum problem in a triangle
+#include<bits/stdc++.h>
+using namespace std;
+#define N 3
+
+// Function for finding maximum sum
+int maxPathSum(int tri[][N], int i, int j, int row, int col){
+	if(j == col ){
+		return 0;
+	}
+
+	if(i == row-1 ){
+		return tri[i][j] ;
+	}
+
+	return tri[i][j] + max(maxPathSum(tri, i+1, j, row, col),
+							maxPathSum(tri, i+1, j+1, row, col)) ;
+}
+
+/* Driver program to test above functions */
+int main()
+{
+int tri[N][N] = { {1, 0, 0},
+					{4, 8, 0},
+					{1, 5, 3} };
+cout << maxPathSum(tri, 0, 0, 3, 3);
+return 0;
+}
